@@ -1,4 +1,4 @@
-# %Replace this with your first and last name%
+# Ameel Aziz - 330002274
 
 # Course Setup 
 
