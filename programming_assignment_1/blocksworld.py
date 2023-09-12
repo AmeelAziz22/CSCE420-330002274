@@ -18,6 +18,19 @@ class State:
         self.grid[destination_row].append(block)
 
 
+class Node:
+    def __init__(self, state, parent=None, action=None):
+        self.state = state  # BlocksworldState object
+        self.parent = parent  # Parent Node
+        self.action = action  # Action that led to this state from the parent
+        self.children = []  # Child Nodes
+        self.depth = 0  # Depth in the tree, initialized to 0
+
+        if parent is not None:
+            self.depth = parent.depth + 1
+            parent.children.append(self)
+
+
 def read_file(file_path):
     content_between_delimiters = []
     current_content = []
@@ -50,7 +63,9 @@ def process_content(content):
     stacks, blocks, moves = [int(num)for num in content[0][0].split()]
     initial_state_content = content[1]
     initial_state = State(initial_state_content)
-    print(initial_state)
+    goal_state_content = content[2]
+    goal_state = State(goal_state_content)
+    return stacks, blocks, moves, initial_state, goal_state
 
 
 def main():
@@ -60,7 +75,8 @@ def main():
     file_path = 'probs\\' + sys.argv[1]
 
     content = read_file(file_path)
-    process_content(content)
+    stacks, blocks, moves, initial_state, goal_state = process_content(content)
+    print(goal_state)
 
 
 if __name__ == "__main__":
