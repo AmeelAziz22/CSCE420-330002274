@@ -1,5 +1,26 @@
 import sys
 
+import heapq
+
+
+class PriorityQueue:
+    def __init__(self):
+        self._queue = []
+
+    def push(self, item, score):
+        heapq.heappush(self._queue, (score, item))
+
+    def pop(self):
+        if not self._queue:
+            raise IndexError("pop from an empty priority queue")
+        return heapq.heappop(self._queue)[1]
+
+    def __len__(self):
+        return len(self._queue)
+
+    def is_empty(self):
+        return len(self) == 0
+
 
 class State:
     def __init__(self, state_list):
@@ -30,6 +51,43 @@ class Node:
             self.depth = parent.depth + 1
             parent.children.append(self)
 
+
+def get_all_possible_states(state):
+    possible_states = []
+    unique_states = set()  # To store unique states
+
+    # Get the grid and blocks in the current state
+    grid = state.grid
+    blocks = set([block for row in grid for block in row])
+
+    # Iterate through each block
+    for block in blocks:
+        # Consider moving the block to another row
+        for destination_row in range(len(grid)):
+            if block in grid[destination_row]:
+                continue  # Skip if the block is already in the destination row
+            new_state = State([row[:] for row in grid])  # Copy the current state
+            new_state.move_block(block, destination_row)  # Move the block
+            state_str = str(new_state)  # Convert state to a string for uniqueness check
+            if state_str not in unique_states:
+                unique_states.add(state_str)
+                possible_states.append(new_state)
+
+        # Consider stacking the block on top of another block
+        for row_index, row in enumerate(grid):
+            if block in row:
+                block_index = row.index(block)
+                if block_index < len(row) - 1:
+                    block_below = row[block_index + 1]
+                    new_state = State([row[:] for row in grid])  # Copy the current state
+                    new_state.move_block(block, row_index)  # Move the block
+                    new_state.move_block(block_below, row_index)  # Stack the block
+                    state_str = str(new_state)  # Convert state to a string for uniqueness check
+                    if state_str not in unique_states:
+                        unique_states.add(state_str)
+                        possible_states.append(new_state)
+
+    return possible_states
 
 def read_file(file_path):
     content_between_delimiters = []
@@ -76,7 +134,12 @@ def main():
 
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
-    print(goal_state)
+    all_possible_states = get_all_possible_states(initial_state)
+    for state in all_possible_states:
+        print(state)
+        print()
+
+
 
 
 if __name__ == "__main__":
