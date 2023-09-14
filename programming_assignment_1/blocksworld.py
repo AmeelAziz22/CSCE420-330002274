@@ -66,10 +66,12 @@ def get_all_possible_states(state):
         for destination_row in range(len(grid)):
             if block in grid[destination_row]:
                 continue  # Skip if the block is already in the destination row
-            new_state = State([row[:] for row in grid])  # Copy the current state
+            # Copy the current state
+            new_state = State([row[:] for row in grid])
             new_state.move_block(block, destination_row)  # Move the block
-            state_str = str(new_state)  # Convert state to a string for uniqueness check
-            if state_str not in unique_states:
+            # Convert state to a string for uniqueness check
+            state_str = str(new_state)
+            if state_str not in unique_states and state_str != str(state):
                 unique_states.add(state_str)
                 possible_states.append(new_state)
 
@@ -79,15 +81,19 @@ def get_all_possible_states(state):
                 block_index = row.index(block)
                 if block_index < len(row) - 1:
                     block_below = row[block_index + 1]
-                    new_state = State([row[:] for row in grid])  # Copy the current state
+                    # Copy the current state
+                    new_state = State([row[:] for row in grid])
                     new_state.move_block(block, row_index)  # Move the block
-                    new_state.move_block(block_below, row_index)  # Stack the block
-                    state_str = str(new_state)  # Convert state to a string for uniqueness check
-                    if state_str not in unique_states:
+                    new_state.move_block(
+                        block_below, row_index)  # Stack the block
+                    # Convert state to a string for uniqueness check
+                    state_str = str(new_state)
+                    if state_str not in unique_states and state_str != str(state):
                         unique_states.add(state_str)
                         possible_states.append(new_state)
 
     return possible_states
+
 
 def read_file(file_path):
     content_between_delimiters = []
@@ -137,9 +143,8 @@ def main():
     all_possible_states = get_all_possible_states(initial_state)
     for state in all_possible_states:
         print(state)
-        print()
-
-
+        print(str(state) == str(initial_state))
+        print(len(all_possible_states))
 
 
 if __name__ == "__main__":
