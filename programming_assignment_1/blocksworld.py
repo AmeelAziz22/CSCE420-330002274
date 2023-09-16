@@ -58,41 +58,28 @@ def get_all_possible_states(state):
 
     # Get the grid and blocks in the current state
     grid = state.grid
-    blocks = set([block for row in grid for block in row])
 
-    # Iterate through each block
-    for block in blocks:
-        # Consider moving the block to another row
-        for destination_row in range(len(grid)):
-            if block in grid[destination_row]:
-                continue  # Skip if the block is already in the destination row
-            # Copy the current state
-            new_state = State([row[:] for row in grid])
-            new_state.move_block(block, destination_row)  # Move the block
-            # Convert state to a string for uniqueness check
-            state_str = str(new_state)
-            if state_str not in unique_states and state_str != str(state):
-                unique_states.add(state_str)
-                possible_states.append(new_state)
+    # Iterate through each row
+    for row_index, row in enumerate(grid):
+        # Get the rightmost block in the current row (if any)
+        rightmost_block = row[-1] if row else None
 
-        # Consider stacking the block on top of another block
-        for row_index, row in enumerate(grid):
-            if block in row:
-                block_index = row.index(block)
-                if block_index < len(row) - 1:
-                    block_below = row[block_index + 1]
-                    # Copy the current state
-                    new_state = State([row[:] for row in grid])
-                    new_state.move_block(block, row_index)  # Move the block
-                    new_state.move_block(
-                        block_below, row_index)  # Stack the block
-                    # Convert state to a string for uniqueness check
-                    state_str = str(new_state)
-                    if state_str not in unique_states and state_str != str(state):
-                        unique_states.add(state_str)
-                        possible_states.append(new_state)
+        # If there is a rightmost block, consider moving it to another row
+        if rightmost_block:
+            for destination_row in range(0, len(grid)):  # Only consider rows below
+                # Copy the current state
+                new_state = State([row[:] for row in grid])
+                new_state.move_block(rightmost_block, destination_row)  # Move the block
+                # Convert state to a string for uniqueness check
+                state_str = str(new_state)
+                if state_str not in unique_states and state_str != str(state):
+                    unique_states.add(state_str)
+                    possible_states.append(new_state)
+
+
 
     return possible_states
+
 
 
 def read_file(file_path):
@@ -141,10 +128,13 @@ def main():
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     all_possible_states = get_all_possible_states(initial_state)
+    print(len(all_possible_states))
+    print(initial_state)
+    print()
     for state in all_possible_states:
         print(state)
-        print(str(state) == str(initial_state))
-        print(len(all_possible_states))
+        print()
+
 
 
 if __name__ == "__main__":
