@@ -1,25 +1,29 @@
 import sys
 
 import heapq
-
+from itertools import count
 
 class PriorityQueue:
     def __init__(self):
         self._queue = []
+        self.counter = count()  # Counter to ensure unique ordering of nodes
 
     def push(self, item, score):
-        heapq.heappush(self._queue, (score, item))
+        count = next(self.counter)
+        heapq.heappush(self._queue, (score, count, item))
 
     def pop(self):
         if not self._queue:
             raise IndexError("pop from an empty priority queue")
-        return heapq.heappop(self._queue)[1]
+        _, _, item = heapq.heappop(self._queue)
+        return item
 
     def __len__(self):
         return len(self._queue)
 
     def is_empty(self):
         return len(self) == 0
+
 
 
 class State:
@@ -66,7 +70,7 @@ def get_all_possible_states(state):
 
         # If there is a rightmost block, consider moving it to another row
         if rightmost_block:
-            for destination_row in range(0, len(grid)):  # Only consider rows below
+            for destination_row in range(0, len(grid)):  
                 # Copy the current state
                 new_state = State([row[:] for row in grid])
                 new_state.move_block(rightmost_block, destination_row)  # Move the block
@@ -118,6 +122,41 @@ def process_content(content):
     goal_state = State(goal_state_content)
     return stacks, blocks, moves, initial_state, goal_state
 
+def pathCost(node):
+    return node.depth
+
+def best_first_search(initial_state, goal_state, moves,max_iters):
+    reached = {}
+    pq = PriorityQueue()
+    initial_node = Node(initial_state)
+    depth = initial_node.depth
+    pq.push(initial_node, depth)
+    while not pq.is_empty():
+        current_node = pq.pop()
+        current_state = current_node.state
+        if(current_state == goal_state):
+            print(current_node.state)
+            return current_node
+        successors = get_all_possible_states(current_state)
+        if current_node.depth < moves:
+            for state in successors:
+                state_node = Node(state,parent=current_node)
+                state_cost = pathCost(state_node)
+                if str(state) not in reached or state_cost < reached[str(state)]:
+                    print(state_cost)
+                    reached[str(state)] = state_cost
+                    pq.push(state_node,state_cost)
+
+
+    print("didnt find")
+    return None
+
+
+
+
+    
+
+
 
 def main():
     if len(sys.argv) < 1:
@@ -127,13 +166,8 @@ def main():
 
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
-    all_possible_states = get_all_possible_states(initial_state)
-    print(len(all_possible_states))
-    print(initial_state)
-    print()
-    for state in all_possible_states:
-        print(state)
-        print()
+    max_iters = 100000000
+    best_first_search(initial_state,goal_state,moves,max_iters)
 
 
 
