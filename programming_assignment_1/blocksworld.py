@@ -134,8 +134,7 @@ def best_first_search(initial_state, goal_state, moves,max_iters):
     while not pq.is_empty():
         current_node = pq.pop()
         current_state = current_node.state
-        if(current_state == goal_state):
-            print(current_node.state)
+        if(str(current_state) == str(goal_state)):
             return current_node
         successors = get_all_possible_states(current_state)
         if current_node.depth < moves:
@@ -143,7 +142,6 @@ def best_first_search(initial_state, goal_state, moves,max_iters):
                 state_node = Node(state,parent=current_node)
                 state_cost = pathCost(state_node)
                 if str(state) not in reached or state_cost < reached[str(state)]:
-                    print(state_cost)
                     reached[str(state)] = state_cost
                     pq.push(state_node,state_cost)
 
@@ -167,7 +165,18 @@ def main():
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     max_iters = 100000000
-    best_first_search(initial_state,goal_state,moves,max_iters)
+    result = best_first_search(initial_state,goal_state,moves,max_iters)
+    if result:
+        print("Goal state found!")
+        # Traverse the path from the goal state to the initial state
+        path = []
+        while result:
+            path.append(result.state)
+            result = result.parent
+        path.reverse()  # Reverse the path to start from the initial state
+        for state in path:
+            print(state)
+            print()
 
 
 
