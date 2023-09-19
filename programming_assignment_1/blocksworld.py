@@ -122,8 +122,22 @@ def process_content(content):
     goal_state = State(goal_state_content)
     return stacks, blocks, moves, initial_state, goal_state
 
-def pathCost(node):
-    return node.depth
+
+def count_blocks_out_of_place(state1, state2):
+    grid1 = state1.grid
+    grid2 = state2.grid
+
+    # Check each corresponding block in the grids and count differences
+    num_rows_out_of_place = 0
+    for row1, row2 in zip(grid1, grid2):
+        if row1 != row2:
+            num_rows_out_of_place += 1
+
+    return num_rows_out_of_place
+
+
+def pathCost(node, goal_state):
+    return node.depth + count_blocks_out_of_place(node.state, goal_state)
 
 def best_first_search(initial_state, goal_state, moves,max_iters):
     reached = {}
@@ -131,19 +145,22 @@ def best_first_search(initial_state, goal_state, moves,max_iters):
     initial_node = Node(initial_state)
     depth = initial_node.depth
     pq.push(initial_node, depth)
-    while not pq.is_empty():
+    i = 0
+    while not pq.is_empty() and i < max_iters:
         current_node = pq.pop()
         current_state = current_node.state
         if(str(current_state) == str(goal_state)):
+            print(i)
             return current_node
         successors = get_all_possible_states(current_state)
         if current_node.depth < moves:
             for state in successors:
                 state_node = Node(state,parent=current_node)
-                state_cost = pathCost(state_node)
+                state_cost = pathCost(state_node, goal_state)
                 if str(state) not in reached or state_cost < reached[str(state)]:
                     reached[str(state)] = state_cost
                     pq.push(state_node,state_cost)
+        i += 1
 
 
     print("didnt find")
@@ -164,7 +181,8 @@ def main():
 
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
-    max_iters = 100000000
+    max_iters = 1000000
+    print(count_blocks_out_of_place(initial_state, goal_state))
     result = best_first_search(initial_state,goal_state,moves,max_iters)
     if result:
         print("Goal state found!")
