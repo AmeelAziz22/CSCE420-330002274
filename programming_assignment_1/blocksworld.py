@@ -3,6 +3,7 @@ import sys
 import heapq
 from itertools import count
 
+
 class PriorityQueue:
     def __init__(self):
         self._queue = []
@@ -23,7 +24,6 @@ class PriorityQueue:
 
     def is_empty(self):
         return len(self) == 0
-
 
 
 class State:
@@ -70,20 +70,18 @@ def get_all_possible_states(state):
 
         # If there is a rightmost block, consider moving it to another row
         if rightmost_block:
-            for destination_row in range(0, len(grid)):  
+            for destination_row in range(0, len(grid)):
                 # Copy the current state
                 new_state = State([row[:] for row in grid])
-                new_state.move_block(rightmost_block, destination_row)  # Move the block
+                new_state.move_block(
+                    rightmost_block, destination_row)  # Move the block
                 # Convert state to a string for uniqueness check
                 state_str = str(new_state)
                 if state_str not in unique_states and state_str != str(state):
                     unique_states.add(state_str)
                     possible_states.append(new_state)
 
-
-
     return possible_states
-
 
 
 def read_file(file_path):
@@ -123,40 +121,54 @@ def process_content(content):
     return stacks, blocks, moves, initial_state, goal_state
 
 
-def count_blocks_out_of_place(state1, state2):
+def generate_block_list(state, num_stacks, num_blocks):
     """
-    Count the number of non-empty blocks (letters) that are out of place when comparing two states.
+    Generate a flattened list of blocks with empty spaces based on the number of stacks and blocks.
 
     Args:
-    state1 (State): The first state to compare.
-    state2 (State): The second state to compare.
+    state (State): The state to generate the list from.
+    num_stacks (int): The number of stacks in the state.
+    num_blocks (int): The number of blocks in each stack.
 
     Returns:
-    int: The number of non-empty blocks (letters) out of place.
+    list: The flattened list of blocks and empty spaces.
     """
-    grid1 = state1.grid
-    grid2 = state2.grid
+    grid = state.grid
+    flattened_blocks = []
 
-    # Flatten the grids into lists of non-empty blocks (letters)
-    blocks1 = [block if block else '' for row in grid1 for block in row]
-    blocks2 = [block if block else '' for row in grid2 for block in row]
+    # Iterate through the rows and blocks and fill with blocks or empty spaces
+    for stack in range(num_stacks):
+        for block in range(num_blocks):
+            if len(grid[stack]) > block:
+                flattened_blocks.append(grid[stack][block])
+            else:
+                flattened_blocks.append(' ')
 
-    # Initialize count
-    num_blocks_out_of_place = 0
-
-    # Compare individual blocks and count differences
-    for block1, block2 in zip(blocks1, blocks2):
-        if block1 != block2:
-            print(block1,block2)
-            num_blocks_out_of_place += 1
-
-    return num_blocks_out_of_place
+    return flattened_blocks
 
 
-def pathCost(node, goal_state):
-    return node.depth 
+def count_blocks_out_of_place(state1, state2, num_stacks, num_blocks):
+    state1_f = generate_block_list(state1, num_stacks, num_blocks)
+    state2_f = generate_block_list(state2, num_stacks, num_blocks)
 
-def best_first_search(initial_state, goal_state, moves,max_iters):
+    state1_combined = ''.join(state1_f)
+    state2_combined = ''.join(state2_f)
+
+    matching_count = 0
+
+    # Compare characters at the same index, ignoring spaces
+    for char1, char2 in zip(state1_combined, state2_combined):
+        if char1 != ' ' and char1 == char2:
+            matching_count += 1
+
+    return (num_blocks-matching_count)
+
+
+def pathCost(node, goal_state, num_stacks, num_blocks):
+    return node.depth + count_blocks_out_of_place(node.state, goal_state, num_stacks, num_blocks)
+
+
+def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, num_blocks):
     reached = {}
     pq = PriorityQueue()
     initial_node = Node(initial_state)
@@ -166,28 +178,22 @@ def best_first_search(initial_state, goal_state, moves,max_iters):
     while not pq.is_empty() and i < max_iters:
         current_node = pq.pop()
         current_state = current_node.state
-        if(str(current_state) == str(goal_state)):
+        if (str(current_state) == str(goal_state)):
             print(i)
             return current_node
         successors = get_all_possible_states(current_state)
         if current_node.depth < moves:
             for state in successors:
-                state_node = Node(state,parent=current_node)
-                state_cost = pathCost(state_node, goal_state)
+                state_node = Node(state, parent=current_node)
+                state_cost = pathCost(
+                    state_node, goal_state, num_stacks, num_blocks)
                 if str(state) not in reached or state_cost < reached[str(state)]:
                     reached[str(state)] = state_cost
-                    pq.push(state_node,state_cost)
+                    pq.push(state_node, state_cost)
         i += 1
-
 
     print("didnt find")
     return None
-
-
-
-
-    
-
 
 
 def main():
@@ -199,8 +205,8 @@ def main():
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     max_iters = 1000000
-    print(count_blocks_out_of_place(initial_state, goal_state))
-    result = best_first_search(initial_state,goal_state,moves,max_iters)
+    result = best_first_search(
+        initial_state, goal_state, moves, max_iters, stacks, blocks)
     if result:
         print("Goal state found!")
         # Traverse the path from the goal state to the initial state
@@ -212,7 +218,6 @@ def main():
         for state in path:
             print(state)
             print()
-
 
 
 if __name__ == "__main__":
