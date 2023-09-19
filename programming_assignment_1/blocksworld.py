@@ -124,20 +124,37 @@ def process_content(content):
 
 
 def count_blocks_out_of_place(state1, state2):
+    """
+    Count the number of non-empty blocks (letters) that are out of place when comparing two states.
+
+    Args:
+    state1 (State): The first state to compare.
+    state2 (State): The second state to compare.
+
+    Returns:
+    int: The number of non-empty blocks (letters) out of place.
+    """
     grid1 = state1.grid
     grid2 = state2.grid
 
-    # Check each corresponding block in the grids and count differences
-    num_rows_out_of_place = 0
-    for row1, row2 in zip(grid1, grid2):
-        if row1 != row2:
-            num_rows_out_of_place += 1
+    # Flatten the grids into lists of non-empty blocks (letters)
+    blocks1 = [block if block else '' for row in grid1 for block in row]
+    blocks2 = [block if block else '' for row in grid2 for block in row]
 
-    return num_rows_out_of_place
+    # Initialize count
+    num_blocks_out_of_place = 0
+
+    # Compare individual blocks and count differences
+    for block1, block2 in zip(blocks1, blocks2):
+        if block1 != block2:
+            print(block1,block2)
+            num_blocks_out_of_place += 1
+
+    return num_blocks_out_of_place
 
 
 def pathCost(node, goal_state):
-    return node.depth + count_blocks_out_of_place(node.state, goal_state)
+    return node.depth 
 
 def best_first_search(initial_state, goal_state, moves,max_iters):
     reached = {}
