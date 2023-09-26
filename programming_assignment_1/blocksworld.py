@@ -163,9 +163,30 @@ def count_blocks_out_of_place(state1, state2, num_stacks, num_blocks):
 
     return (num_blocks-matching_count)
 
+def count_matching_letters(state1, state2, num_stacks, num_blocks):
+
+    state1_f = generate_block_list(state1, num_stacks, num_blocks)
+    state2_f = generate_block_list(state2, num_stacks, num_blocks)
+
+    stack_size = num_blocks
+    string1 = ''.join(state1_f)
+    string2 = ''.join(state2_f)
+    matching_count = 0
+    # Compare characters at the same index and before
+    for i in range(0, len(string1)):
+        if string1[i] != ' ' and string1[i]==string2[i]:
+            if i % stack_size != 0 and string1[i-1] != string2[i-1]:
+                matching_count += 2
+            # if i % stack_size != stack_size-1 and string1[i+1] != string2[i+1]:
+            #     matching_count += 1
+
+            
+
+
+    return matching_count
 
 def pathCost(node, goal_state, num_stacks, num_blocks):
-    return node.depth + count_blocks_out_of_place(node.state, goal_state, num_stacks, num_blocks)
+    return node.depth + count_blocks_out_of_place(node.state, goal_state, num_stacks, num_blocks) + count_matching_letters(node.state, goal_state, num_stacks, num_blocks)
 
 
 def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, num_blocks):
@@ -176,10 +197,12 @@ def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, n
     pq.push(initial_node, depth)
     i = 0
     while not pq.is_empty() and i < max_iters:
+        if i % 50000 == 0:
+            print("IP")
         current_node = pq.pop()
         current_state = current_node.state
         if (str(current_state) == str(goal_state)):
-            print(i)
+            print("iterations", i)
             return current_node
         successors = get_all_possible_states(current_state)
         if current_node.depth < moves:
@@ -205,6 +228,7 @@ def main():
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     max_iters = 1000000
+    print(count_matching_letters(initial_state, goal_state, stacks, blocks))
     result = best_first_search(
         initial_state, goal_state, moves, max_iters, stacks, blocks)
     if result:
@@ -215,6 +239,7 @@ def main():
             path.append(result.state)
             result = result.parent
         path.reverse()  # Reverse the path to start from the initial state
+        print(len(path))
         for state in path:
             print(state)
             print()
