@@ -185,8 +185,41 @@ def count_matching_letters(state1, state2, num_stacks, num_blocks):
 
     return matching_count
 
+def hill_climbing(state1, state2, num_stacks, num_blocks):
+    state1_f = generate_block_list(state1, num_stacks, num_blocks)
+    state2_f = generate_block_list(state2, num_stacks, num_blocks)
+    
+
+    matrix1 = [state1_f[i:i + num_blocks] for i in range(0, len(state1_f), num_blocks)]
+    matrix2 = [state2_f[i:i + num_blocks] for i in range(0, len(state1_f), num_blocks)]
+
+
+    total_count = 0
+    
+    for i in range(len(matrix1)):
+        stack1 = matrix1[i]
+        stack2 = matrix2[i]
+        no_match = False
+        for j in range(len(stack1)):
+            block1 = stack1[j]
+            block2 = stack2[j]
+            if block1 != block2:
+                no_match = True
+            if no_match:
+                if block1 == ' ' and block2 == ' ':
+                    pass
+                else:
+                    total_count += 1
+
+
+    return total_count
+
+
+
+
+
 def pathCost(node, goal_state, num_stacks, num_blocks):
-    return node.depth + count_blocks_out_of_place(node.state, goal_state, num_stacks, num_blocks) + count_matching_letters(node.state, goal_state, num_stacks, num_blocks)
+    return node.depth + hill_climbing(node.state,goal_state,num_stacks,num_blocks)
 
 
 def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, num_blocks):
@@ -228,6 +261,7 @@ def main():
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     max_iters = 1000000
+    print(hill_climbing(initial_state,goal_state,stacks,blocks))
     print(count_matching_letters(initial_state, goal_state, stacks, blocks))
     result = best_first_search(
         initial_state, goal_state, moves, max_iters, stacks, blocks)
