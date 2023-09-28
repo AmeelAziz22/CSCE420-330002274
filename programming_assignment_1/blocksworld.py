@@ -50,6 +50,7 @@ class Node:
         self.action = action  # Action that led to this state from the parent
         self.children = []  # Child Nodes
         self.depth = 0  # Depth in the tree, initialized to 0
+        self.heur = None
 
         if parent is not None:
             self.depth = parent.depth + 1
@@ -108,7 +109,6 @@ def read_file(file_path):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-    print(content_between_delimiters)
     return content_between_delimiters
 
 
@@ -210,6 +210,14 @@ def hill_climbing(state1, state2, num_stacks, num_blocks):
                     pass
                 else:
                     total_count += 1
+            else:
+                if block1 == ' ' and block2 == ' ':
+                    pass
+                elif j == 0:
+                    pass
+                else:
+                    total_count -= 2
+
 
 
     return total_count
@@ -218,65 +226,97 @@ def hill_climbing(state1, state2, num_stacks, num_blocks):
 
 
 
-def pathCost(node, goal_state, num_stacks, num_blocks):
-    return node.depth + hill_climbing(node.state,goal_state,num_stacks,num_blocks)
+def pathCost(node, goal_state, num_stacks, num_blocks,bfs):
+    if bfs:
+        return node.depth
+    return (node.depth) + hill_climbing(node.state,goal_state,num_stacks,num_blocks)
 
 
-def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, num_blocks):
+def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, num_blocks,print_iters,bfs):
     reached = {}
     pq = PriorityQueue()
     initial_node = Node(initial_state)
     depth = initial_node.depth
+    initial_node.heur=pathCost(initial_node,goal_state,num_stacks,num_blocks,bfs)
+    max_qsize = 0
     pq.push(initial_node, depth)
     i = 0
     while not pq.is_empty() and i < max_iters:
-        if i % 50000 == 0:
-            print("IP")
         current_node = pq.pop()
         current_state = current_node.state
         if (str(current_state) == str(goal_state)):
-            print("iterations", i)
-            return current_node
+            return current_node, max_qsize, i
         successors = get_all_possible_states(current_state)
+        if(print_iters):
+            print("iter=",i," depth =",current_node.depth,", heurisitc=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs)-current_node.depth,", score=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs),"children=",len(successors),"Queue size = ",pq.__len__())
+        if (i%50000==0):
+            print("iter=",i," depth =",current_node.depth,", heurisitc=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs)-current_node.depth,", score=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs),"children=",len(successors),"Queue size = ",pq.__len__())
+        if pq.__len__() > max_qsize:
+            max_qsize = pq.__len__()
         if current_node.depth < moves:
             for state in successors:
                 state_node = Node(state, parent=current_node)
                 state_cost = pathCost(
-                    state_node, goal_state, num_stacks, num_blocks)
+                    state_node, goal_state, num_stacks, num_blocks,bfs)
+                state_node.heur = state_cost-state_node.depth
                 if str(state) not in reached or state_cost < reached[str(state)]:
                     reached[str(state)] = state_cost
                     pq.push(state_node, state_cost)
         i += 1
 
-    print("didnt find")
-    return None
+    return None, max_qsize, i
 
 
 def main():
+    max_iters = 1000000
+    print_iters=True
+    bfs = False
     if len(sys.argv) < 1:
         print("Usage: python blocksworld.py <filename>")
         sys.exit(1)
-    file_path = 'probs\\' + sys.argv[1]
+    if len(sys.argv)==3:
+        if sys.argv[2]=="N":
+            print_iters = False
+    
+    if len(sys.argv)==4:
+        if sys.argv[2]=="N":
+            print_iters = False
+        max_iters = int(sys.argv[3])
 
+    if len(sys.argv) == 5:
+        if sys.argv[2]=="N":
+            print_iters = False
+        max_iters = int(sys.argv[3])
+        if sys.argv[4] == "Y":
+            bfs=True
+
+
+    
+    file_path = 'probs\\' + sys.argv[1]
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
-    max_iters = 1000000
-    print(hill_climbing(initial_state,goal_state,stacks,blocks))
-    print(count_matching_letters(initial_state, goal_state, stacks, blocks))
-    result = best_first_search(
-        initial_state, goal_state, moves, max_iters, stacks, blocks)
+    result, max_qsize, iter = best_first_search(
+        initial_state, goal_state, moves, max_iters, stacks, blocks,print_iters,bfs)
     if result:
-        print("Goal state found!")
         # Traverse the path from the goal state to the initial state
         path = []
+        heur_path = []
         while result:
             path.append(result.state)
+            heur_path.append(result.heur)
             result = result.parent
         path.reverse()  # Reverse the path to start from the initial state
-        print(len(path))
+        heur_path.reverse()
+        move = 0
         for state in path:
+            score = heur_path[move]
+            score += move
+            print("move ",move, " pathcost=",move," heurisitc=",heur_path[move]," f(n) = g(n)+h(n)=",score)
             print(state)
-            print()
+            print(">>>>>>")
+            move += 1
+        method = "Astar"
+        print("Statistics:",file_path," method",method," planlen ", len(path)-1," iter ",iter, " maxq ",max_qsize)
 
 
 if __name__ == "__main__":
