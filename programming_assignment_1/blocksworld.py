@@ -289,10 +289,8 @@ def main():
         max_iters = int(sys.argv[3])
         if sys.argv[4] == "Y":
             bfs=True
-
-
     
-    file_path = 'probs\\' + sys.argv[1]
+    file_path = 'probs/' + sys.argv[1]
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     result, max_qsize, iter = best_first_search(
