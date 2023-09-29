@@ -295,6 +295,9 @@ def main():
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     result, max_qsize, iter = best_first_search(
         initial_state, goal_state, moves, max_iters, stacks, blocks,print_iters,bfs)
+    method = "Astar"
+    if bfs:
+        method = "BFS"
     if result:
         # Traverse the path from the goal state to the initial state
         path = []
@@ -314,9 +317,8 @@ def main():
             print(">>>>>>")
             move += 1
         
-        method = "Astar"
-        if bfs:
-            method = "BFS"
+        
+
         print("Statistics:",file_path," method",method," planlen ", len(path)-1," iter ",iter, " maxq ",max_qsize)
     else:
         print("Statistics:",file_path," method",method," planlen FAILED"," iter ",iter, " maxq ",max_qsize)
