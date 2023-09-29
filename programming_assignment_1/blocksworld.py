@@ -249,7 +249,7 @@ def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, n
         successors = get_all_possible_states(current_state)
         if(print_iters):
             print("iter=",i," depth =",current_node.depth,", heurisitc=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs)-current_node.depth,", score=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs),"children=",len(successors),"Queue size = ",pq.__len__())
-        if (i%50000==0):
+        if (i%50000==0 and print_iters==False):
             print("iter=",i," depth =",current_node.depth,", heurisitc=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs)-current_node.depth,", score=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs),"children=",len(successors),"Queue size = ",pq.__len__())
         if pq.__len__() > max_qsize:
             max_qsize = pq.__len__()

@@ -27,7 +27,7 @@ Some example command line
 
 `python3 blocksworld.py probB10.bwp`
 
-`python blocksworld.py probB19.bwp N`
+`python3 blocksworld.py probB19.bwp N`
 
 # Limitations
 
