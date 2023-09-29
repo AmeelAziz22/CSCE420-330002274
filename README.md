@@ -56,8 +56,8 @@ Some example command line
 
 `python3 blocksworld.py probB10.bwp`
 
-`python blocksworld.py probB19.bwp N`
+`python3 blocksworld.py probB19.bwp N`
 
 # Limitations
 
-The program is able to solve all the problems. However, probB10.bwp takes over 100,000 iterations to solve the entire problem so I would reccomend keeping at default 1,000,000. The program also make take more iterations to complete but will find a shorter solution then the results in teh instruction. For B19, I got a planlen of 15 instead of 19. 
+The program is able to solve all the problems. However, probB10.bwp takes over 100,000 iterations to solve the entire problem so I would reccomend keeping at default 1,000,000. The program also make take more iterations to complete but will
