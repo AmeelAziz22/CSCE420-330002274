@@ -1,0 +1,56 @@
+iter= 0  depth = 0 , heurisitc= 8 , score= 8 children= 16 Queue size =  0
+iter= 1  depth = 1 , heurisitc= 4 , score= 5 children= 16 Queue size =  15
+iter= 2  depth = 2 , heurisitc= 0 , score= 2 children= 16 Queue size =  27
+iter= 3  depth = 3 , heurisitc= -3 , score= 0 children= 16 Queue size =  38
+iter= 4  depth = 4 , heurisitc= -6 , score= -2 children= 16 Queue size =  48
+iter= 5  depth = 5 , heurisitc= -10 , score= -5 children= 16 Queue size =  59
+move  0  pathcost= 0  heurisitc= 8  f(n) = g(n)+h(n)= 8
+J
+
+BCE
+ADGI
+FH
+>>>>>>
+move  1  pathcost= 1  heurisitc= 4  f(n) = g(n)+h(n)= 5
+JI
+
+BCE
+ADG
+FH
+>>>>>>
+move  2  pathcost= 2  heurisitc= 0  f(n) = g(n)+h(n)= 2
+JIG
+
+BCE
+AD
+FH
+>>>>>>
+move  3  pathcost= 3  heurisitc= -3  f(n) = g(n)+h(n)= 0
+JIG
+
+BC
+AD
+FHE
+>>>>>>
+move  4  pathcost= 4  heurisitc= -6  f(n) = g(n)+h(n)= -2
+JIGC
+
+B
+AD
+FHE
+>>>>>>
+move  5  pathcost= 5  heurisitc= -10  f(n) = g(n)+h(n)= -5
+JIGC
+
+BD
+A
+FHE
+>>>>>>
+move  6  pathcost= 6  heurisitc= -14  f(n) = g(n)+h(n)= -8
+JIGC
+
+BDA
+
+FHE
+>>>>>>
+Statistics: probs/probB06.bwp  method Astar  planlen  6  iter  6  maxq  59
