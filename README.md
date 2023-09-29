@@ -26,3 +26,16 @@ git tag "pa1" && git push origin "pa1"
 2. If you want to resubmit, simply delete the old git tag, and then recreate it on your latest
 commit. `git push --delete origin "pa1" && git tag --delete "pa1"`
 
+# PA1 Instructions
+PA1
+
+The blocksworld program made with python. 
+
+You can run it with:
+
+`python3 blocksworld.py [filename]`
+
+In compute.cs.tamu.edu, running with python uses version 2.7 when python uses version 3.6. If you are on regular system, you can run it with 
+
+`python blocksworld.py [filename]`
+
