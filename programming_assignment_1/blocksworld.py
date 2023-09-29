@@ -313,9 +313,13 @@ def main():
             print(state)
             print(">>>>>>")
             move += 1
+        
         method = "Astar"
+        if bfs:
+            method = "BFS"
         print("Statistics:",file_path," method",method," planlen ", len(path)-1," iter ",iter, " maxq ",max_qsize)
-
+    else:
+        print("Statistics:",file_path," method",method," planlen FAILED"," iter ",iter, " maxq ",max_qsize)
 
 if __name__ == "__main__":
     main()
