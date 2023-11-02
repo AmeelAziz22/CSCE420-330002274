@@ -249,7 +249,7 @@ def best_first_search(initial_state, goal_state, moves, max_iters, num_stacks, n
         successors = get_all_possible_states(current_state)
         if(print_iters):
             print("iter=",i," depth =",current_node.depth,", heurisitc=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs)-current_node.depth,", score=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs),"children=",len(successors),"Queue size = ",pq.__len__())
-        if (i%50000==0):
+        if (i%50000==0 and print_iters==False):
             print("iter=",i," depth =",current_node.depth,", heurisitc=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs)-current_node.depth,", score=",pathCost(current_node,goal_state,num_stacks,num_blocks,bfs),"children=",len(successors),"Queue size = ",pq.__len__())
         if pq.__len__() > max_qsize:
             max_qsize = pq.__len__()
@@ -289,14 +289,15 @@ def main():
         max_iters = int(sys.argv[3])
         if sys.argv[4] == "Y":
             bfs=True
-
-
     
-    file_path = 'probs\\' + sys.argv[1]
+    file_path = 'probs/' + sys.argv[1]
     content = read_file(file_path)
     stacks, blocks, moves, initial_state, goal_state = process_content(content)
     result, max_qsize, iter = best_first_search(
         initial_state, goal_state, moves, max_iters, stacks, blocks,print_iters,bfs)
+    method = "Astar"
+    if bfs:
+        method = "BFS"
     if result:
         # Traverse the path from the goal state to the initial state
         path = []
@@ -315,9 +316,12 @@ def main():
             print(state)
             print(">>>>>>")
             move += 1
-        method = "Astar"
-        print("Statistics:",file_path," method",method," planlen ", len(path)-1," iter ",iter, " maxq ",max_qsize)
+        
+        
 
+        print("Statistics:",file_path," method",method," planlen ", len(path)-1," iter ",iter, " maxq ",max_qsize)
+    else:
+        print("Statistics:",file_path," method",method," planlen FAILED"," iter ",iter, " maxq ",max_qsize)
 
 if __name__ == "__main__":
     main()

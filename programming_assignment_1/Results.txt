@@ -1,0 +1,92 @@
+Heuristic:
+For my heuristic, I used a version of hill climbing algorithm. Because the Heuristic function needs to give the 
+worse state, I would count the amount of blocks that is out of place or has a block underneath it out of place. 
+I would basically count up from the bottom of stack and once the stack stops matching I would count every block compared
+to the goal state 
+
+I also would also reward states for having consecutive blocks in place which is probably why my B19 problem was
+slow as it only has two stacks in the goal state. For every block that is on top of its correct block with no blocks 
+under it out of place I would subtract two. 
+
+The function that uses this heuristic is called hill_climbing()
+
+
+For example: in Problem probB03:
+>>>>>>>>>> Initial
+DEHIJ
+G
+B
+AC
+F
+>>>>>>>> Goal
+DEHIJF
+GB
+C
+A
+
+>>>>>>
+This gives a heuristic of -3 as missing B on top of G in stack two, B, A, C, and F all add +1 but the E, H, I, J all give -2 resulting in -3
+
+In ProbB10, 
+>>>>>>>>>>
+
+BF
+CGHI
+AJ
+DE
+>>>>>>>>>>
+
+BFJ
+CH
+EIDG
+A
+>>>>>>>>>>
+
+The initial state gives a score of 8. 
+the missing J on stack 2, G, H, and I, A, J, missing D & G of stack 3, and D, E give +1 and F of stack 1 is correct consecutive so it gives -2 resulting 
+in a heuristic score of 8
+
+Statistics: probs/probA03.bwp  method BFS  planlen  3  iter  74  maxq  48
+Statistics: probs/probA04.bwp  method BFS  planlen  4  iter  87  maxq  112
+Statistics: probs/probA05.bwp  method BFS  planlen  5  iter  256  maxq  259
+Statistics: probs/probA06.bwp  method BFS  planlen  6  iter  415  maxq  348
+Statistics: probs/probA07.bwp  method BFS  planlen  7  iter  981  maxq  464
+Statistics: probs/probA08.bwp  method BFS  planlen  8  iter  1304  maxq  594
+Statistics: probs/probA09.bwp  method BFS  planlen  9  iter  1801  maxq  645
+Statistics: probs/probA10.bwp  method BFS  planlen  10  iter  2462  maxq  645
+Statistics: probs/probA11.bwp  method BFS  planlen  11  iter  2348  maxq  601
+Statistics: probs/probB03.bwp  method BFS  planlen  3  iter  1181  maxq  6426
+Statistics: probs/probB04.bwp  method BFS  planlen  4  iter  9700  maxq  50440
+Statistics: probs/probB05.bwp  method BFS  planlen  5  iter  71358  maxq  301661
+Statistics: probs/probB06.bwp  method BFS  planlen  6  iter  186812  maxq  746621
+Statistics: probs/probB07.bwp  method BFS  planlen  7  iter  936119  maxq  1424991
+Statistics: probs/probB08.bwp  method BFS  planlen FAILED  iter  1000000  maxq  3465644
+B09-B20 Failed as well
+
+Statistics: probs/probA03.bwp  method Astar  planlen  3  iter  3  maxq  7
+Statistics: probs/probA04.bwp  method Astar  planlen  4  iter  6  maxq  12
+Statistics: probs/probA05.bwp  method Astar  planlen  5  iter  6  maxq  16
+Statistics: probs/probA06.bwp  method Astar  planlen  6  iter  50  maxq  47
+Statistics: probs/probA07.bwp  method Astar  planlen  7  iter  19  maxq  41
+Statistics: probs/probA08.bwp  method Astar  planlen  8  iter  59  maxq  105
+Statistics: probs/probA09.bwp  method Astar  planlen  9  iter  72  maxq  118
+Statistics: probs/probA10.bwp  method Astar  planlen  10  iter  289  maxq  297
+Statistics: probs/probA11.bwp  method Astar  planlen  11  iter  155  maxq  277
+Statistics: probs/probB03.bwp  method Astar  planlen  3  iter  3  maxq  31
+Statistics: probs/probB04.bwp  method Astar  planlen  4  iter  4  maxq  50
+Statistics: probs/probB05.bwp  method Astar  planlen  5  iter  5  maxq  60
+Statistics: probs/probB06.bwp  method Astar  planlen  6  iter  6  maxq  59
+Statistics: probs/probB07.bwp  method Astar  planlen  7  iter  101  maxq  912
+Statistics: probs/probB08.bwp  method Astar  planlen  10  iter  69  maxq  506
+Statistics: probs/probB09.bwp  method Astar  planlen  9  iter  49  maxq  471
+Statistics: probs/probB10.bwp  method Astar  planlen  9  iter  72  maxq  714
+Statistics: probs/probB11.bwp  method Astar  planlen  9  iter  35  maxq  317
+Statistics: probs/probB12.bwp  method Astar  planlen  9  iter  78  maxq  845
+Statistics: probs/probB13.bwp  method Astar  planlen  13  iter  5819  maxq  23245
+Statistics: probs/probB14.bwp  method Astar  planlen  15  iter  4515  maxq  25861
+Statistics: probs/probB15.bwp  method Astar  planlen  15  iter  2383  maxq  13031
+Statistics: probs/probB16.bwp  method Astar  planlen  18  iter  5947  maxq  37844
+Statistics: probs/probB17.bwp  method Astar  planlen  16  iter  17935  maxq  112304
+Statistics: probs/probB18.bwp  method Astar  planlen  14  iter  21006  maxq  154305
+Statistics: probs/probB19.bwp  method Astar  planlen  15  iter  346255  maxq  1215888
+Statistics: probs/probB20.bwp  method Astar  planlen  20  iter  21864  maxq  131305

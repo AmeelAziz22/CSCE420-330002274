@@ -1,0 +1,150 @@
+iter= 0  depth = 0 , heurisitc= 12 , score= 12 children= 20 Queue size =  0
+iter= 0  depth = 0 , heurisitc= 12 , score= 12 children= 20 Queue size =  0
+iter= 1  depth = 1 , heurisitc= 11 , score= 12 children= 20 Queue size =  19
+iter= 2  depth = 1 , heurisitc= 11 , score= 12 children= 20 Queue size =  35
+iter= 3  depth = 1 , heurisitc= 11 , score= 12 children= 20 Queue size =  50
+iter= 4  depth = 1 , heurisitc= 11 , score= 12 children= 20 Queue size =  65
+iter= 5  depth = 1 , heurisitc= 11 , score= 12 children= 20 Queue size =  78
+iter= 6  depth = 1 , heurisitc= 11 , score= 12 children= 20 Queue size =  91
+iter= 7  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  104
+iter= 8  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  119
+iter= 9  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  133
+iter= 10  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  147
+iter= 11  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  160
+iter= 12  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  169
+iter= 13  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  178
+iter= 14  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  192
+iter= 15  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  203
+iter= 16  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  213
+iter= 17  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  223
+iter= 18  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  234
+iter= 19  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  245
+iter= 20  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  255
+iter= 21  depth = 2 , heurisitc= 10 , score= 12 children= 20 Queue size =  265
+iter= 22  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  280
+iter= 23  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  290
+iter= 24  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  300
+iter= 25  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  310
+iter= 26  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  320
+iter= 27  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  330
+iter= 28  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  337
+iter= 29  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  347
+iter= 30  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  357
+iter= 31  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  364
+iter= 32  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  371
+iter= 33  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  381
+iter= 34  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  391
+iter= 35  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  401
+iter= 36  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  412
+iter= 37  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  425
+iter= 38  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  435
+iter= 39  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  446
+iter= 40  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  456
+iter= 41  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  470
+iter= 42  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  477
+iter= 43  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  488
+iter= 44  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  498
+iter= 45  depth = 3 , heurisitc= 9 , score= 12 children= 16 Queue size =  508
+iter= 46  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  519
+iter= 47  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  529
+iter= 48  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  540
+iter= 49  depth = 3 , heurisitc= 9 , score= 12 children= 20 Queue size =  551
+iter= 50  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  562
+iter= 51  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  569
+iter= 52  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  576
+iter= 53  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  583
+iter= 54  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  590
+iter= 55  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  597
+iter= 56  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  604
+iter= 57  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  611
+iter= 58  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  618
+iter= 59  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  629
+iter= 60  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  640
+iter= 61  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  651
+iter= 62  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  658
+iter= 63  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  665
+iter= 64  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  676
+iter= 65  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  687
+iter= 66  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  698
+iter= 67  depth = 4 , heurisitc= 8 , score= 12 children= 16 Queue size =  709
+iter= 68  depth = 1 , heurisitc= 12 , score= 13 children= 20 Queue size =  720
+iter= 69  depth = 1 , heurisitc= 12 , score= 13 children= 20 Queue size =  735
+iter= 70  depth = 1 , heurisitc= 12 , score= 13 children= 20 Queue size =  750
+iter= 71  depth = 2 , heurisitc= 9 , score= 11 children= 20 Queue size =  761
+iter= 72  depth = 3 , heurisitc= 5 , score= 8 children= 20 Queue size =  776
+iter= 73  depth = 4 , heurisitc= 2 , score= 6 children= 20 Queue size =  791
+iter= 74  depth = 5 , heurisitc= -2 , score= 3 children= 20 Queue size =  805
+iter= 75  depth = 6 , heurisitc= -5 , score= 1 children= 16 Queue size =  820
+iter= 76  depth = 7 , heurisitc= -7 , score= 0 children= 20 Queue size =  830
+iter= 77  depth = 8 , heurisitc= -10 , score= -2 children= 16 Queue size =  845
+move  0  pathcost= 0  heurisitc= 12  f(n) = g(n)+h(n)= 12
+DIJ
+BC
+EG
+H
+AF
+>>>>>>
+move  1  pathcost= 1  heurisitc= 12  f(n) = g(n)+h(n)= 13
+DIJ
+BC
+E
+HG
+AF
+>>>>>>
+move  2  pathcost= 2  heurisitc= 9  f(n) = g(n)+h(n)= 11
+DIJ
+BC
+EF
+HG
+A
+>>>>>>
+move  3  pathcost= 3  heurisitc= 5  f(n) = g(n)+h(n)= 8
+DIJ
+B
+EF
+HG
+AC
+>>>>>>
+move  4  pathcost= 4  heurisitc= 2  f(n) = g(n)+h(n)= 6
+DIJ
+B
+EFG
+H
+AC
+>>>>>>
+move  5  pathcost= 5  heurisitc= -2  f(n) = g(n)+h(n)= 3
+DI
+B
+EFGJ
+H
+AC
+>>>>>>
+move  6  pathcost= 6  heurisitc= -5  f(n) = g(n)+h(n)= 1
+DI
+B
+EFGJ
+
+ACH
+>>>>>>
+move  7  pathcost= 7  heurisitc= -7  f(n) = g(n)+h(n)= 0
+D
+B
+EFGJ
+I
+ACH
+>>>>>>
+move  8  pathcost= 8  heurisitc= -10  f(n) = g(n)+h(n)= -2
+D
+
+EFGJ
+IB
+ACH
+>>>>>>
+move  9  pathcost= 9  heurisitc= -12  f(n) = g(n)+h(n)= -3
+
+D
+EFGJ
+IB
+ACH
+>>>>>>
+Statistics: probs/probB12.bwp  method Astar  planlen  9  iter  78  maxq  845
