@@ -90,6 +90,45 @@ def Find_Unit_Clause(clauses, model):
     return None, 0
 
 
+# instead have to dictionaries checking sign or not sign of first and whether it is pure or not
+
+def Find_Pure_Symbol(clauses, model):
+    symbols = set()
+    for clause in clauses:
+        literals = clause.split()
+        for literal in literals:
+            if literal.startswith('-') and model[literal[1:]] == 0:
+                symbols.add(literal[1:])  # Remove the leading '-'
+            elif model[literal] == 0:
+                symbols.add(literal)
+
+    symbol_sign = {symbol: ' ' for symbol in symbols}
+    symbol_pure = {symbol: True for symbol in symbols}
+
+    for clause in clauses:
+        literals = clause.split()
+        for literal in literals:
+            if literal.startswith('-') and literal[1:] in symbols:
+                if symbol_sign[literal[1:]] == ' ':
+                    symbol_sign[literal[1:]] = '-'
+                elif symbol_sign[literal[1:]] == '+':
+                    symbol_pure[literal[1:]] = False
+            elif literal in symbols:
+                if symbol_sign[literal] == ' ':
+                    symbol_sign[literal] = '+'
+                elif symbol_sign[literal] == '-':
+                    symbol_pure[literal] = False
+
+    for symbol in symbols:
+        if symbol_pure[symbol]:
+            if symbol_sign[symbol] == '-':
+                return symbol, -1
+            else:
+                return symbol, 1
+
+    return None, 0
+
+
 def main():
     if len(sys.argv) < 1:
         print("Usage: python DPLL.py <filename>")
@@ -98,9 +137,8 @@ def main():
     for i in range(2, len(sys.argv)):
         clauses.add(sys.argv[i])
     model = create_model(clauses)
-    model['wagFido'] = -1
-    model['barkFido'] = -1
     print(Find_Unit_Clause(clauses, model))
+    print(Find_Pure_Symbol(clauses, model))
 
 
 if __name__ == "__main__":
