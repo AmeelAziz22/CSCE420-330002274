@@ -1,0 +1,180 @@
+# (-> C1W (and -L1W O1W))
+
+-L1W -C1W
+O1W -C1W
+
+# (-> C2W (and -L2W O2W))
+
+-L2W -C2W
+O2W -C2W
+
+# (-> C3W (and -L3W O3W))
+
+-L3W -C3W
+O3W -C3W
+
+# (-> C1Y (and -L1Y O1Y))
+
+-L1Y -C1Y
+O1Y -C1Y
+
+# (-> C2Y (and -L2Y O2Y))
+
+-L2Y -C2Y
+O2Y -C2Y
+
+# (-> C3Y (and -L3Y O3Y))
+
+-L3Y -C3Y
+O3Y -C3Y
+
+# (-> C1W (and -C1Y -C1B))
+
+-C1Y -C1W
+-C1B -C1W
+
+# (-> C2W (and -C2Y -C2B))
+
+-C2Y -C2W
+-C2B -C2W
+
+# (-> C3W (and -C3Y -C3B))
+
+-C3Y -C3W
+-C3B -C3W
+
+# (-> C1Y (and -C1W -C1B))
+
+-C1W -C1Y
+-C1B -C1Y
+
+# (-> C2Y (and -C2W -C2B))
+
+-C2W -C2Y
+-C2B -C2Y
+
+# (-> C3Y (and -C3W -C3B))
+
+-C3W -C3Y
+-C3B -C3Y
+
+# (-> C1B (and -C1W -C1Y))
+
+-C1W -C1B
+-C1Y -C1B
+
+# (-> C2B (and -C2W -C2Y))
+
+-C2W -C2B
+-C2Y -C2B
+
+# (-> C3B (and -C3W -C3Y))
+
+-C3W -C3B
+-C3Y -C3B
+
+# (-> C1B -L1B)
+
+-C1B -L1B
+
+# (-> C2B -L2B)
+
+-C2B -L2B
+
+# (-> C3B -L3B)
+
+-C3B -L3B
+
+# (-> L1W (and -L1B -L1Y))
+
+-L1B -L1W
+-L1Y -L1W
+
+# (-> L2W (and -L2B -L2Y))
+
+-L2B -L2W
+-L2Y -L2W
+
+# (-> L1W (and -L1B -L1Y))
+
+-L1B -L1W
+-L1Y -L1W
+
+# (-> L1Y (and -L1B -L1W))
+
+-L1B -L1Y
+-L1W -L1Y
+
+# (-> L2Y (and -L2B -L2W))
+
+-L2B -L2Y
+-L2W -L2Y
+
+# (-> L3Y (and -L3B -L3W))
+
+-L3B -L3Y
+-L3W -L3Y
+
+# (-> L1B (and -L1Y -L1W))
+
+-L1Y -L1B
+-L1W -L1B
+
+# (-> L2B (and -L2Y -L2W))
+
+-L2Y -L2B
+-L2W -L2B
+
+# (-> L3B (and -L3Y -L3W))
+
+-L3Y -L3B
+-L3W -L3B
+
+# (-> O1W -O1Y)
+
+-O1W -O1Y
+
+# (-> O1Y -O1W)
+
+-O1Y -O1W
+
+# (-> O2W -O2Y)
+
+-O2W -O2Y
+
+# (-> O2Y -O2W)
+
+-O2Y -O2W
+
+# (-> O3W -O3Y)
+
+-O3W -O3Y
+
+# (-> O3Y -O3W)
+
+-O3Y -O3W
+
+# (and (or C1W C2W)(and (or C1W C3W) (or C2W C3W)))
+
+C1W C2W
+C1W C3W
+C2W C3W
+
+# (or -C1W -C2W)
+
+-C1W -C2W
+
+# (or -C1W -C3W)
+
+-C1W -C3W
+
+# (or -C2W -C3W)
+
+-C2W -C3W
+
+# 
+# 
+# 
+# 
+# 
+# 

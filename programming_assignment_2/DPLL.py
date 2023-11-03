@@ -160,9 +160,14 @@ def evaluate_some_clauses_to_be_False(clauses, model):
 def DPLL(clauses, model):
     print(model)
     if evaluate_all_clauses_to_be_True(clauses, model):
+        print("h")
+        for key, value in model.items():
+            if value == 1:
+                print(key)
         return True
     # print("after check every clause is true")
     if evaluate_some_clauses_to_be_False(clauses, model) == False:
+        print("failed")
         return False
     # print("after check some clause is false")
     symbol, value = Find_Pure_Symbol(clauses, model)
@@ -188,7 +193,6 @@ def DPLL(clauses, model):
         print(key_with_value_zero)
         print("trying shit")
         return DPLL(clauses, model_True) or DPLL(clauses, model_False)
-    return False
 
 
 def main():
