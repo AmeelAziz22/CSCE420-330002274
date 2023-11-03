@@ -97,10 +97,11 @@ def Find_Pure_Symbol(clauses, model):
     for clause in clauses:
         literals = clause.split()
         for literal in literals:
-            if literal.startswith('-') and model[literal[1:]] == 0:
-                symbols.add(literal[1:])  # Remove the leading '-'
-            elif model[literal] == 0:
-                symbols.add(literal)
+            s = literal
+            if literal.startswith('-'):
+                s = literal[1:]
+            if model[s] == 0:
+                symbols.add(s)
 
     symbol_sign = {symbol: ' ' for symbol in symbols}
     symbol_pure = {symbol: True for symbol in symbols}
@@ -136,9 +137,9 @@ def evaluate_clause(clause, model):
             if model[literal[1:]] == -1:
                 return True
         else:
-            if model[literal]==1:
+            if model[literal] == 1:
                 return True
-            
+
     return False
 
 
@@ -147,8 +148,10 @@ def evaluate_all_clauses_to_be_True(clauses, model):
         return None
     return all(evaluate_clause(clause, model) for clause in clauses)
 
+
 def evaluate_some_clauses_to_be_False(clauses, model):
-    false_clause = next((clause for clause in clauses if not evaluate_clause(clause, model)), None)
+    false_clause = next(
+        (clause for clause in clauses if not evaluate_clause(clause, model)), None)
     if false_clause == None:
         return False
     return True
@@ -158,29 +161,35 @@ def DPLL(clauses, model):
     print(model)
     if evaluate_all_clauses_to_be_True(clauses, model):
         return True
-    print("after check every clause is true")
+    # print("after check every clause is true")
     if evaluate_some_clauses_to_be_False(clauses, model) == False:
         return False
-    print("after check some clause is false")
+    # print("after check some clause is false")
     symbol, value = Find_Pure_Symbol(clauses, model)
     if symbol != None:
         new_model = model.copy()
         new_model[symbol] = value
+        print("pure")
         return DPLL(clauses, new_model)
-    symbol, value = Find_Unit_Clause(clauses,model)
+    symbol, value = Find_Unit_Clause(clauses, model)
     if symbol != None:
         new_model = model.copy()
         new_model[symbol] = value
+        print("Find Unit")
         return DPLL(clauses, new_model)
     model_True = model.copy()
     model_False = model.copy()
-    
-    key_with_value_zero = next((key for key, value in model.items() if value == 0), None)
+
+    key_with_value_zero = next(
+        (key for key, value in model.items() if value == 0), None)
     if key_with_value_zero != None:
         model_True[key_with_value_zero] = 1
         model_False[key_with_value_zero] = -1
-        return DPLL(clauses, model_True) or DPLL(clauses,model_False)
+        print(key_with_value_zero)
+        print("trying shit")
+        return DPLL(clauses, model_True) or DPLL(clauses, model_False)
     return False
+
 
 def main():
     if len(sys.argv) < 1:
@@ -191,10 +200,10 @@ def main():
         clauses.add(sys.argv[i])
     model = create_model(clauses)
 
-    
     print(model)
 
     DPLL(clauses, model)
+
 
 if __name__ == "__main__":
     main()
