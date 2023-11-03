@@ -131,6 +131,8 @@ def Find_Pure_Symbol(clauses, model):
 
 
 def evaluate_clause(clause, model):
+    key_with_value_zero = next(
+        (key for key, value in model.items() if value == 0), None)
     literals = clause.split()
     for literal in literals:
         if literal.startswith('-'):
@@ -140,6 +142,8 @@ def evaluate_clause(clause, model):
             if model[literal] == 1:
                 return True
 
+    if key_with_value_zero == None:
+        print(clause)
     return False
 
 
@@ -158,15 +162,17 @@ def evaluate_some_clauses_to_be_False(clauses, model):
 
 
 def DPLL(clauses, model):
-    print(model)
+    # print(model)
+
     if evaluate_all_clauses_to_be_True(clauses, model):
-        print("h")
+        print(model)
         for key, value in model.items():
             if value == 1:
                 print(key)
         return True
     # print("after check every clause is true")
     if evaluate_some_clauses_to_be_False(clauses, model) == False:
+        print(model)
         print("failed")
         return False
     # print("after check some clause is false")
@@ -193,6 +199,9 @@ def DPLL(clauses, model):
         print(key_with_value_zero)
         print("trying shit")
         return DPLL(clauses, model_True) or DPLL(clauses, model_False)
+    else:
+        print(model)
+        return False
 
 
 def main():
@@ -206,7 +215,7 @@ def main():
 
     print(model)
 
-    DPLL(clauses, model)
+    print(DPLL(clauses, model))
 
 
 if __name__ == "__main__":

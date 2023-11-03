@@ -154,11 +154,9 @@ O3Y -C3Y
 
 -O3Y -O3W
 
-# (and (or C1W C2W)(and (or C1W C3W) (or C2W C3W)))
+# (or C1W (or C2W C3W))
 
-C1W C2W
-C1W C3W
-C2W C3W
+C1W C2W C3W
 
 # (or -C1W -C2W)
 
@@ -171,6 +169,38 @@ C2W C3W
 # (or -C2W -C3W)
 
 -C2W -C3W
+
+# (or C1Y (or C2Y C3Y))
+
+C1Y C2Y C3Y
+
+# (or -C1Y -C2Y)
+
+-C1Y -C2Y
+
+# (or -C1Y -C3Y)
+
+-C1Y -C3Y
+
+# (or -C2Y -C3Y)
+
+-C2Y -C3Y
+
+# (or C1B (or C2B C3B))
+
+C1B C2B C3B
+
+# (or -C1B -C2B)
+
+-C1B -C2B
+
+# (or -C1B -C3B)
+
+-C1B -C3B
+
+# (or -C2B -C3B)
+
+-C2B -C3B
 
 # 
 # 
