@@ -129,6 +129,59 @@ def Find_Pure_Symbol(clauses, model):
     return None, 0
 
 
+def evaluate_clause(clause, model):
+    literals = clause.split()
+    for literal in literals:
+        if literal.startswith('-'):
+            if model[literal[1:]] == -1:
+                return True
+        else:
+            if model[literal]==1:
+                return True
+            
+    return False
+
+
+def evaluate_all_clauses_to_be_True(clauses, model):
+    if any(value == 0 for value in model.values()):
+        return None
+    return all(evaluate_clause(clause, model) for clause in clauses)
+
+def evaluate_some_clauses_to_be_False(clauses, model):
+    false_clause = next((clause for clause in clauses if not evaluate_clause(clause, model)), None)
+    if false_clause == None:
+        return False
+    return True
+
+
+def DPLL(clauses, model):
+    print(model)
+    if evaluate_all_clauses_to_be_True(clauses, model):
+        return True
+    print("after check every clause is true")
+    if evaluate_some_clauses_to_be_False(clauses, model) == False:
+        return False
+    print("after check some clause is false")
+    symbol, value = Find_Pure_Symbol(clauses, model)
+    if symbol != None:
+        new_model = model.copy()
+        new_model[symbol] = value
+        return DPLL(clauses, new_model)
+    symbol, value = Find_Unit_Clause(clauses,model)
+    if symbol != None:
+        new_model = model.copy()
+        new_model[symbol] = value
+        return DPLL(clauses, new_model)
+    model_True = model.copy()
+    model_False = model.copy()
+    
+    key_with_value_zero = next((key for key, value in model.items() if value == 0), None)
+    if key_with_value_zero != None:
+        model_True[key_with_value_zero] = 1
+        model_False[key_with_value_zero] = -1
+        return DPLL(clauses, model_True) or DPLL(clauses,model_False)
+    return False
+
 def main():
     if len(sys.argv) < 1:
         print("Usage: python DPLL.py <filename>")
@@ -137,9 +190,11 @@ def main():
     for i in range(2, len(sys.argv)):
         clauses.add(sys.argv[i])
     model = create_model(clauses)
-    print(Find_Unit_Clause(clauses, model))
-    print(Find_Pure_Symbol(clauses, model))
 
+    
+    print(model)
+
+    DPLL(clauses, model)
 
 if __name__ == "__main__":
     main()
