@@ -180,7 +180,7 @@ def DPLL(clauses, model):
     if symbol != None:
         new_model = model.copy()
         new_model[symbol] = value
-        print("pure")
+        print("pure",symbol, value)
         return DPLL(clauses, new_model)
     symbol, value = Find_Unit_Clause(clauses, model)
     if symbol != None:
