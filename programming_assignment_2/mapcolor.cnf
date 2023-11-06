@@ -1,0 +1,245 @@
+# 
+# (-> WAR (and -WAB -WAG))
+
+-WAB -WAR
+-WAG -WAR
+
+# (-> WAG (and -WAB -WAR))
+
+-WAB -WAG
+-WAR -WAG
+
+# (-> WAB (and -WAR -WAG))
+
+-WAR -WAB
+-WAG -WAB
+
+# (-> NTR (and -NTB -NTG))
+
+-NTB -NTR
+-NTG -NTR
+
+# (-> NTG (and -NTB -NTR))
+
+-NTB -NTG
+-NTR -NTG
+
+# (-> NTB (and -NTR -NTG))
+
+-NTR -NTB
+-NTG -NTB
+
+# (-> SAR (and -SAB -SAG))
+
+-SAB -SAR
+-SAG -SAR
+
+# (-> SAG (and -SAB -SAR))
+
+-SAB -SAG
+-SAR -SAG
+
+# (-> SAB (and -SAR -SAG))
+
+-SAR -SAB
+-SAG -SAB
+
+# (-> QR (and -QB -QG))
+
+-QB -QR
+-QG -QR
+
+# (-> QG (and -QB -QR))
+
+-QB -QG
+-QR -QG
+
+# (-> QB (and -QR -QG))
+
+-QR -QB
+-QG -QB
+
+# (-> VR (and -VB -VG))
+
+-VB -VR
+-VG -VR
+
+# (-> VG (and -VB -VR))
+
+-VB -VG
+-VR -VG
+
+# (-> VB (and -VR -VG))
+
+-VR -VB
+-VG -VB
+
+# (-> TR (and -TB -TG))
+
+-TB -TR
+-TG -TR
+
+# (-> TG (and -TB -TR))
+
+-TB -TG
+-TR -TG
+
+# (-> TB (and -TR -TG))
+
+-TR -TB
+-TG -TB
+
+# (-> NSWR (and -NSWB -NSWG))
+
+-NSWB -NSWR
+-NSWG -NSWR
+
+# (-> NSWG (and -NSWB -NSWR))
+
+-NSWB -NSWG
+-NSWR -NSWG
+
+# (-> NSWB (and -NSWR -NSWG))
+
+-NSWR -NSWB
+-NSWG -NSWB
+
+# 
+# 
+# (-> WAR (and -NTR -SAR))
+
+-NTR -WAR
+-SAR -WAR
+
+# (-> WAG (and -NTG -SAG))
+
+-NTG -WAG
+-SAG -WAG
+
+# (-> WAB (and -NTB -SAB))
+
+-NTB -WAB
+-SAB -WAB
+
+# (-> NTR (and -WAR -SAR -QR))
+
+-WAR -NTR
+-SAR -NTR
+-QR -NTR
+
+# (-> NTG (and -WAG -SAG -QG))
+
+-WAG -NTG
+-SAG -NTG
+-QG -NTG
+
+# (-> NTB (and -WAB -SAB -QB))
+
+-WAB -NTB
+-SAB -NTB
+-QB -NTB
+
+# (-> SAR (and -WAR -NTR -QR -NSWR -VR))
+
+-WAR -SAR
+-NTR -SAR
+-QR -SAR
+-NSWR -SAR
+-VR -SAR
+
+# (-> SAG (and -WAG -NTG -QG -NSWG -VG))
+
+-WAG -SAG
+-NTG -SAG
+-QG -SAG
+-NSWG -SAG
+-VG -SAG
+
+# (-> SAB (and -WAB -NTB -QB -NSWB -VB))
+
+-WAB -SAB
+-NTB -SAB
+-QB -SAB
+-NSWB -SAB
+-VB -SAB
+
+# (-> QR (and -NTR -SAR -NSWR))
+
+-NTR -QR
+-SAR -QR
+-NSWR -QR
+
+# (-> QG (and -NTG -SAG -NSWG))
+
+-NTG -QG
+-SAG -QG
+-NSWG -QG
+
+# (-> QB (and -NTB -SAB -NSWB))
+
+-NTB -QB
+-SAB -QB
+-NSWB -QB
+
+# (-> NSWR (and -QR -SAR -VR))
+
+-QR -NSWR
+-SAR -NSWR
+-VR -NSWR
+
+# (-> NSWG (and -QG -SAG -VG))
+
+-QG -NSWG
+-SAG -NSWG
+-VG -NSWG
+
+# (-> NSWB (and -QB -SAB -VB))
+
+-QB -NSWB
+-SAB -NSWB
+-VB -NSWB
+
+# (-> VR (and -NSWR -SAR))
+
+-NSWR -VR
+-SAR -VR
+
+# (-> VG (and -NSWG -SAG))
+
+-NSWG -VG
+-SAG -VG
+
+# (-> VB (and -NSWB -SAB))
+
+-NSWB -VB
+-SAB -VB
+
+# 
+# (or WAB WAG WAB)
+
+WAB WAG WAB
+
+# (or NTR NTG NTB)
+
+NTR NTG NTB
+
+# (or SAR SAB SAG)
+
+SAR SAB SAG
+
+# (or QR QG QB)
+
+QR QG QB
+
+# (or NSWR NSWG NSWB)
+
+NSWR NSWG NSWB
+
+# (or VR VG VB)
+
+VR VG VB
+
+# (or TR TG TB)
+
+TR TG TB
+
