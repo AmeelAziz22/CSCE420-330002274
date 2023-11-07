@@ -173,26 +173,30 @@ def DPLL(clauses, model, uch, psh, output):
     global dpll_count
     print(output)
     dpll_count += 1
-    print(model)
+    print("model:",model)
 
     if evaluate_all_clauses_to_be_True(clauses, model):
-        print(model)
+        print("Solution:")
+        truth_list = []
         for key, value in model.items():
+            print(f"{key}: {value}")
             if value == 1:
-                print(key)
-        print(dpll_count)
+                truth_list.append(key)
+
+        print("just the Satisfied (true) positions:")
+        print(' '.join(truth_list))
+        print("total DPLL calls:",dpll_count)
+        print("UCH=",uch)
+        print("PSH=",psh)
         return True
-    # print("after check every clause is true")
     if evaluate_some_clauses_to_be_False(clauses, model) == True:
         print("Backtracking")
         return False
-    # print("after check some clause is false")
     if psh:
         symbol, value = Find_Pure_Symbol(clauses, model)
         if symbol != None:
             new_model = model.copy()
             new_model[symbol] = value
-            # print("pure", symbol, value)
             output = "Forcing " + symbol + "=" + str(value) + " by PSH"
             return DPLL(clauses, new_model, uch, psh, output)
     if uch:
@@ -200,7 +204,6 @@ def DPLL(clauses, model, uch, psh, output):
         if symbol != None:
             new_model = model.copy()
             new_model[symbol] = value
-            # print("Find Unit")
             output = "Forcing " + symbol + "=" + str(value) + " by UCH"
             return DPLL(clauses, new_model, uch, psh, output)
     model_True = model.copy()
@@ -232,9 +235,9 @@ def main():
             clauses.add(sys.argv[i])
     model = create_model(clauses)
 
-    print(model)
-
-    print(DPLL(clauses, model, uch, psh, ""))
+    output = DPLL(clauses, model, uch, psh, "")
+    if output == False:
+        print("Unsatisfiable")
 
 
 if __name__ == "__main__":
