@@ -161,8 +161,13 @@ def evaluate_some_clauses_to_be_False(clauses, model):
     return True
 
 
-def DPLL(clauses, model):
-    # print(model)
+dpll_count = 0
+
+
+def DPLL(clauses, model, uch, psh, output):
+    global dpll_count
+    dpll_count += 1
+    print(output)
 
     if evaluate_all_clauses_to_be_True(clauses, model):
         print(model)
@@ -172,22 +177,25 @@ def DPLL(clauses, model):
         return True
     # print("after check every clause is true")
     if evaluate_some_clauses_to_be_False(clauses, model) == False:
-        print(model)
-        print("failed")
+        print("Backtracking")
         return False
     # print("after check some clause is false")
-    symbol, value = Find_Pure_Symbol(clauses, model)
-    if symbol != None:
-        new_model = model.copy()
-        new_model[symbol] = value
-        print("pure",symbol, value)
-        return DPLL(clauses, new_model)
-    symbol, value = Find_Unit_Clause(clauses, model)
-    if symbol != None:
-        new_model = model.copy()
-        new_model[symbol] = value
-        print("Find Unit")
-        return DPLL(clauses, new_model)
+    if psh:
+        symbol, value = Find_Pure_Symbol(clauses, model)
+        if symbol != None:
+            new_model = model.copy()
+            new_model[symbol] = value
+            # print("pure", symbol, value)
+            output = "Forcing " + symbol + "=" + str(value) + " by PSH"
+            return DPLL(clauses, new_model, uch, psh, output)
+    if uch:
+        symbol, value = Find_Unit_Clause(clauses, model)
+        if symbol != None:
+            new_model = model.copy()
+            new_model[symbol] = value
+            # print("Find Unit")
+            output = "Forcing " + symbol + "=" + str(value) + " by UCH"
+            return DPLL(clauses, new_model, uch, psh, output)
     model_True = model.copy()
     model_False = model.copy()
 
@@ -198,7 +206,9 @@ def DPLL(clauses, model):
         model_False[key_with_value_zero] = -1
         print(key_with_value_zero)
         print("trying shit")
-        return DPLL(clauses, model_True) or DPLL(clauses, model_False)
+        output1 = "trying " + key_with_value_zero + "=T"
+        output2 = "trying " + key_with_value_zero + "=F"
+        return DPLL(clauses, model_True, uch, psh, output1) or DPLL(clauses, model_False, uch, psh, output2)
     else:
         print(model)
         return False
@@ -209,13 +219,19 @@ def main():
         print("Usage: python DPLL.py <filename>")
         sys.exit(1)
     clauses = read_cnf_file(filename=sys.argv[1])
+    uch, psh = False, False
     for i in range(2, len(sys.argv)):
-        clauses.add(sys.argv[i])
+        if sys.argv[i] == "+UCH":
+            uch = True
+        elif sys.argv[i] == "+PSH":
+            psh = True
+        else:
+            clauses.add(sys.argv[i])
     model = create_model(clauses)
 
     print(model)
 
-    print(DPLL(clauses, model))
+    print(DPLL(clauses, model, uch, psh, ""))
 
 
 if __name__ == "__main__":
