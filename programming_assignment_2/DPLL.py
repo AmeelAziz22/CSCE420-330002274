@@ -134,17 +134,22 @@ def evaluate_clause(clause, model):
     key_with_value_zero = next(
         (key for key, value in model.items() if value == 0), None)
     literals = clause.split()
+    literal_zero = False
     for literal in literals:
         if literal.startswith('-'):
             if model[literal[1:]] == -1:
                 return True
+            elif model[literal[1:]] == 0:
+                literal_zero = True
         else:
             if model[literal] == 1:
                 return True
-
-    if key_with_value_zero == None:
-        print(clause)
-    return False
+            elif model[literal] == 0:
+                literal_zero = True
+    if literal_zero == False:
+        return False
+    else:
+        return None
 
 
 def evaluate_all_clauses_to_be_True(clauses, model):
@@ -154,11 +159,11 @@ def evaluate_all_clauses_to_be_True(clauses, model):
 
 
 def evaluate_some_clauses_to_be_False(clauses, model):
-    false_clause = next(
-        (clause for clause in clauses if not evaluate_clause(clause, model)), None)
-    if false_clause == None:
-        return False
-    return True
+    for clause in clauses:
+        result = evaluate_clause(clause, model)
+        if result is False:
+            return True
+    return False
 
 
 dpll_count = 0
@@ -166,17 +171,19 @@ dpll_count = 0
 
 def DPLL(clauses, model, uch, psh, output):
     global dpll_count
-    dpll_count += 1
     print(output)
+    dpll_count += 1
+    print(model)
 
     if evaluate_all_clauses_to_be_True(clauses, model):
         print(model)
         for key, value in model.items():
             if value == 1:
                 print(key)
+        print(dpll_count)
         return True
     # print("after check every clause is true")
-    if evaluate_some_clauses_to_be_False(clauses, model) == False:
+    if evaluate_some_clauses_to_be_False(clauses, model) == True:
         print("Backtracking")
         return False
     # print("after check some clause is false")
@@ -204,14 +211,10 @@ def DPLL(clauses, model, uch, psh, output):
     if key_with_value_zero != None:
         model_True[key_with_value_zero] = 1
         model_False[key_with_value_zero] = -1
-        print(key_with_value_zero)
-        print("trying shit")
         output1 = "trying " + key_with_value_zero + "=T"
         output2 = "trying " + key_with_value_zero + "=F"
+
         return DPLL(clauses, model_True, uch, psh, output1) or DPLL(clauses, model_False, uch, psh, output2)
-    else:
-        print(model)
-        return False
 
 
 def main():
