@@ -20,6 +20,7 @@ I also added two hueristics: Unit Clause Heuristic (+UCH) and Pure Symbol Heuris
 to run these heuristics, use the argument +UCH or +PSH which will turn on the heuristic (and obviosly won't be added to the knowledge base)
 
 `python3 DPLL.py 6queens.cnf +UCH`
+'python3 DPLL.py 5queens.cnf -Q11 +UCH +PSH`
 
 After running your program, it should print out the path of the DPLL algorithm, printing what it tries or forces variables to be, when the algorithm backtracks, and the solution if satisfiable or if it is not satisfiable. You can see these in all the results textfiles in this repo. 
 

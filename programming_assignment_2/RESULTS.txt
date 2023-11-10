@@ -1,0 +1,111 @@
+command line:  python3 DPLL.py sammy.cnf O1Y O2W O3Y L1W L2Y L3B > result_sammy_scenarioA.txt
+just the Satisfied (true) positions:
+C3Y C1B L3B L1W L2Y C2W O1Y O2W O3Y
+total DPLL calls: 220
+UCH= False
+PSH= False
+
+# python3 DPLL.py sammy.cnf O1Y O2W O3Y L1W L2Y L3B +UCH
+just the Satisfied (true) positions:
+C2W O1Y C1B O2W O3Y L1W L2Y L3B C3Y
+total DPLL calls: 25
+UCH= True
+PSH= False
+
+#python DPLL.py sammy.cnf O1W O2Y O3W L1W L2B L3B > result_sammy_scenarioB.txt
+just the Satisfied (true) positions:
+O1W C3W L1W C1B O3W O2Y L3B L2B C2Y
+total DPLL calls: 284
+UCH= False
+PSH= False
+
+# python3 DPLL.py sammy.cnf O1W O2Y O3W L1W L2B L3B +UCH
+just the Satisfied (true) positions:
+L3B C2Y L1W C3W L2B O1W O3W C1B O2Y
+total DPLL calls: 25
+UCH= True
+PSH= False
+
+# python3 DPLL.py 3queens.cnf
+Unsatisfiable
+total DPLL calls: 49
+
+# python3 DPLL.py 3queens.cnf +UCH
+Unsatisfiable
+total DPLL calls: 29
+
+# python3 DPLL.py 4queens.cnf
+just the Satisfied (true) positions:
+Q13 Q21 Q42 Q34
+total DPLL calls: 67
+UCH= False
+PSH= False
+
+# python3 DPLL.py 4queens.cnf +UCH
+just the Satisfied (true) positions:
+Q21 Q34 Q42 Q13
+total DPLL calls: 17
+UCH= True
+PSH= False
+
+# python3 DPLL.py 5queens.cnf
+just the Satisfied (true) positions:
+Q42 Q11 Q23 Q35 Q54
+total DPLL calls: 56
+UCH= False
+PSH= False
+
+# python3 DPLL.py 5queens.cnf +UCH
+just the Satisfied (true) positions:
+Q12 Q24 Q55 Q31 Q43
+total DPLL calls: 26
+UCH= True
+PSH= False
+
+# python3 DPLL.py 6queens.cnf
+just the Satisfied (true) positions:
+Q62 Q31 Q15 Q46 Q54 Q23
+total DPLL calls: 637
+UCH= False
+PSH= False
+
+# python3 DPLL.py 6queens.cnf +UCH
+just the Satisfied (true) positions:
+Q12 Q36 Q24 Q41 Q65 Q53
+total DPLL calls: 80
+UCH= True
+PSH= False
+
+#python DPLL.py mapcolor.cnf > results_mapcolor.txt
+just the Satisfied (true) positions:
+QB NTR WAB VB TR NSWR SAG
+total DPLL calls: 48
+UCH= False
+PSH= False
+
+#python3 DPLL.py mapcolor.cnf +UCH > results_mapcolor.UCH.txt
+just the Satisfied (true) positions:
+SAG TG WAB NTR VB QB NSWR
+total DPLL calls: 28
+UCH= True
+PSH= False
+
+# python3 DPLL.py mapcolor.cnf -VB > results_mapcolor2.txt
+just the Satisfied (true) positions:
+NTB TR WAG SAR QG NSWB VG
+total DPLL calls: 168
+UCH= False
+PSH= False
+
+# python3 DPLL.py mapcolor.cnf -VB +UCH
+just the Satisfied (true) positions:
+SAR WAG TB QG VG NTB NSWB
+total DPLL calls: 22
+UCH= True
+PSH= False
+
+
+
+
+
+

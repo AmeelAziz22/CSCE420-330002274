@@ -239,6 +239,7 @@ def main():
     output = DPLL(clauses, model, uch, psh, "")
     if output == False:
         print("Unsatisfiable")
+        print("total DPLL calls:", dpll_count)
 
 
 if __name__ == "__main__":
