@@ -173,7 +173,7 @@ def DPLL(clauses, model, uch, psh, output):
     global dpll_count
     print(output)
     dpll_count += 1
-    print("model:",model)
+    print("model:", model)
 
     if evaluate_all_clauses_to_be_True(clauses, model):
         print("Solution:")
@@ -185,9 +185,9 @@ def DPLL(clauses, model, uch, psh, output):
 
         print("just the Satisfied (true) positions:")
         print(' '.join(truth_list))
-        print("total DPLL calls:",dpll_count)
-        print("UCH=",uch)
-        print("PSH=",psh)
+        print("total DPLL calls:", dpll_count)
+        print("UCH=", uch)
+        print("PSH=", psh)
         return True
     if evaluate_some_clauses_to_be_False(clauses, model) == True:
         print("Backtracking")
@@ -234,7 +234,8 @@ def main():
         else:
             clauses.add(sys.argv[i])
     model = create_model(clauses)
-
+    command_line = " ".join(sys.argv)
+    print("# python3", command_line)
     output = DPLL(clauses, model, uch, psh, "")
     if output == False:
         print("Unsatisfiable")

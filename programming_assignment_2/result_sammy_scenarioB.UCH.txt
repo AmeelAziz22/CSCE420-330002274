@@ -1,0 +1,81 @@
+# python3 DPLL.py sammy.cnf O1W O2Y O3W L1W L2B L3B +UCH
+
+model: {'L3B': 0, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': 0, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 0, 'C1Y': 0, 'L1B': 0, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 0, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': 0, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L3B=1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': 0, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 0, 'C1Y': 0, 'L1B': 0, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 0, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': 0, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L3W=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': 0, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 0, 'C1Y': 0, 'L1B': 0, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 0, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L1W=1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': 0, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 1, 'C1Y': 0, 'L1B': 0, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 0, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L1B=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': 0, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 1, 'C1Y': 0, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 0, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L1Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 1, 'C1Y': 0, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 0, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L2B=1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': 0, 'L1W': 1, 'C1Y': 0, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L2Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': 0, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 0, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing O1W=1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': 0, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': 0, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing O1Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': 0, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing C1Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': 0, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L2W=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': 0, 'O2Y': 0}
+Forcing L3Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 0, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 0}
+Forcing O3W=1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': 0, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 0}
+Forcing O3Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': 0, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 0}
+Forcing C3Y=-1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 0, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 0}
+Forcing C2Y=1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 0}
+Forcing O2Y=1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': 0, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 1}
+Forcing C2B=-1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': 0, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 1}
+Forcing C2W=-1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': -1, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': 0, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 1}
+Forcing O2W=-1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': -1, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': -1, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': 0, 'L3Y': -1, 'O2Y': 1}
+Forcing C1W=-1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': -1, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 0, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': -1, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': -1, 'L3Y': -1, 'O2Y': 1}
+Forcing C3W=1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': -1, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': 0, 'C3W': 1, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': -1, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': -1, 'L3Y': -1, 'O2Y': 1}
+Forcing C3B=-1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': -1, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': -1, 'C3W': 1, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': -1, 'L3W': -1, 'O3W': 1, 'C1B': 0, 'C1W': -1, 'L3Y': -1, 'O2Y': 1}
+Forcing C1B=1 by UCH
+model: {'L3B': 1, 'C3Y': -1, 'L2W': -1, 'O1Y': -1, 'L1Y': -1, 'C2Y': 1, 'C2W': -1, 'L2Y': -1, 'L1W': 1, 'C1Y': -1, 'L1B': -1, 'O3Y': -1, 'C3B': -1, 'C3W': 1, 'L2B': 1, 'C2B': -1, 'O1W': 1, 'O2W': -1, 'L3W': -1, 'O3W': 1, 'C1B': 1, 'C1W': -1, 'L3Y': -1, 'O2Y': 1}
+Solution:
+L3B: 1
+C3Y: -1
+L2W: -1
+O1Y: -1
+L1Y: -1
+C2Y: 1
+C2W: -1
+L2Y: -1
+L1W: 1
+C1Y: -1
+L1B: -1
+O3Y: -1
+C3B: -1
+C3W: 1
+L2B: 1
+C2B: -1
+O1W: 1
+O2W: -1
+L3W: -1
+O3W: 1
+C1B: 1
+C1W: -1
+L3Y: -1
+O2Y: 1
+just the Satisfied (true) positions:
+L3B C2Y L1W C3W L2B O1W O3W C1B O2Y
+total DPLL calls: 25
+UCH= True
+PSH= False
