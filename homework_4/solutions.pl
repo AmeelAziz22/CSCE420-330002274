@@ -28,8 +28,8 @@ male(rod).
 male(ned).
 male(abraham).
 % problem 1 rules
-brother(X,Y) :- male(Y), parent(Y,Z), parent(X,Z), X\=Y.
-sister(X,Y) :- female(Y), parent(Y,Z), parent(X,Z), X\=Y.
+brother(X,Y) :- male(Y), parent(Y,Z), parent(X,Z), X\=Y .
+sister(X,Y) :- female(Y), parent(Y,Z), parent(X,Z), X\=Y .
 aunt(X,Y) :- female(Y), parent(X,Z), sister(Z,Y).
 uncle(X,Y) :- male(Y), parent(X,Z), brother(Z,Y).
 grandfather(X,Y) :- male(Y), parent(X,Z), parent(Z,Y).

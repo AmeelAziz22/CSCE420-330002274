@@ -1,0 +1,128 @@
+Problem 1
+
+?- brother(rod,X).
+X = tod .
+
+?- sister(marge,X).
+X = patty ;
+X = selma .
+
+?- aunt(X,patty).
+X = bart ;
+X = lisa ;
+X = maggie .
+
+?- uncle(bart,X).
+X = herb .
+
+?- grandfather(maggie,X).
+X = abraham .
+
+?- granddaughter(jackie,D).
+D = maggie ;
+D = lisa .
+
+?- ancestor(bart,X).
+X = homer ;
+X = marge ;
+X = abraham ;
+X = jackie .
+
+Problem 2
+
+?- query2a(X).
+X = sam ;
+X = bill ;
+X = joan.
+
+?- query2b(X).
+X = lance .
+
+?- query2c(X).
+X = charlie ;
+X = lisa .
+
+Problem 3
+?- canTeach(X,Y).
+X = bill,
+Y = organic ;
+X = bill,
+Y = inorganic ;
+X = susan,
+Y = algebra ;
+X = susan,
+Y = calculus.
+
+?- canTeach2(X,Y).
+X = susan,
+Y = algebra ;
+X = susan,
+Y = calculus.
+
+?- canTeach3(X,Y).
+X = susan,
+Y = algebra ;
+X = susan,
+Y = calculus ;
+X = chuck,
+Y = dynamics ;
+X = chuck,
+Y = electromagnetism ;
+X = chuck,
+Y = nuclear.
+
+Problem 4
+?- octal_code(A,B,C).
+000
+A = B, B = C, C = 0 ;
+001
+A = B, B = 0,
+C = 1 ;
+010
+A = C, C = 0,
+B = 1 ;
+011
+A = 0,
+B = C, C = 1 ;
+100
+A = 1,
+B = C, C = 0 ;
+101
+A = C, C = 1,
+B = 0 ;
+110
+A = B, B = 1,
+C = 0 ;
+111
+A = B, B = C, C = 1.
+
+Because of backchaining, it first unifies bit(C) with bit(0) and A=B=C so its all 0
+Then, it changes C to 1 to second solution. 
+Then backchains since C has all options making A=C and B = 1
+It then backchains again to where B=C and C=1, A=0.
+From then on it keeps exploring all options and backchaining when solution is already found 
+and exploring all different possible solutions within the conditions in the predicates
+
+Problem 5 (only showed two solution)
+
+?- mapcolor(WA,NT,SA,Q,NSW,V,T).
+WA = Q, Q = V, V = T, T = red,
+NT = NSW, NSW = green,
+SA = blue ;
+WA = Q, Q = V, V = red,
+NT = NSW, NSW = T, T = green,
+SA = blue .
+
+?- WA=green, mapcolor(WA,NT,SA,Q,NSW,V,T).
+WA = Q, Q = V, V = green,
+NT = NSW, NSW = T, T = red,
+SA = blue ;
+WA = Q, Q = V, V = T, T = green,
+NT = NSW, NSW = red,
+SA = blue .
+
+?- WA=red, Q=green, mapcolor(WA,NT,SA,Q,NSW,V,T).
+false.
+
+
+
